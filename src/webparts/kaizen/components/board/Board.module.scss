@@ -1,0 +1,294 @@
+@use '../shared' as *;
+
+/*
+ * The board: its heading, pills, search and pickers, each idea's card, the
+ * vote button and the stage badge. Colours come from the site's theme; only
+ * the stage colours are fixed, because they mean the same thing on every site.
+ */
+
+.board {
+  padding: 4px 0 24px;
+}
+
+.srOnly {
+  @include srOnly;
+}
+
+/* ---------- heading ---------- */
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  h2 {
+    margin: 0 0 4px;
+  }
+}
+
+.intro {
+  margin: 0;
+  max-width: 62ch;
+  color: $subtext;
+}
+
+/* ---------- pills, search and pickers ---------- */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.filter {
+  margin: 0;
+  color: inherit;
+  box-sizing: border-box;
+  @include filterPill(7px, 999px);
+
+  &.on {
+    background: $primary;
+    border-color: $primary;
+    color: $onPrimary;
+
+    &:hover {
+      background: $primaryHover;
+      border-color: $primaryHover;
+    }
+
+    .count {
+      background: rgba(255, 255, 255, 0.25);
+      color: inherit;
+    }
+  }
+}
+
+.count {
+  min-width: 18px;
+  padding: 0 6px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  background: $wash;
+  color: $subtext;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.search {
+  @include searchBox(220px, 32px);
+}
+
+/* The search box's magnifying glass: Fluent's Search icon. */
+.searchMark {
+  @include searchMark;
+}
+
+.picker {
+  flex: 0 1 180px;
+  min-width: 140px;
+}
+
+/* ---------- the cards ---------- */
+
+.cards {
+  @include listReset;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: $surface;
+  @include frame;
+
+  &:hover {
+    border-color: $lineStrong;
+  }
+}
+
+.cardBody {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Written as .cardBody .cardTitle so it outranks the frame's own rule for every
+   h3, which leaves a big gap above for the headings inside a page. */
+.cardBody .cardTitle {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* The idea's name, as a button that reads like a link. */
+.titleLink {
+  @include linkLook;
+  text-align: left;
+  font-weight: 600;
+  @include focusRing;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.cardProblem {
+  margin: 0 0 8px;
+  color: $text2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: center;
+  font-size: 12px;
+  color: $subtext;
+}
+
+.area {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: $wash;
+  color: $text2;
+  font-weight: 600;
+}
+
+.empty {
+  @include dashedNote(40px 16px);
+
+  h3 {
+    margin: 0 0 4px;
+    color: $text;
+  }
+
+  p {
+    margin: 0 0 12px;
+  }
+}
+
+/* ---------- the vote button ---------- */
+
+.vote {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 52px;
+  min-height: 56px;
+  padding: 6px 0;
+  box-sizing: border-box;
+  @include frame($lineStrong);
+  background: $surface;
+  color: $text;
+  @include plainButton;
+
+  &:hover:not(:disabled) {
+    background: $primarySoft;
+    border-color: $primary;
+  }
+
+  &:disabled {
+    cursor: default;
+    color: $subtext;
+    background: $washAlt;
+  }
+
+  &.voted {
+    background: $primarySoft;
+    border-color: $primary;
+    color: $primaryDeep;
+  }
+}
+
+/* The wider one on an idea's own page: the mark, the count and a word, in a row. */
+.votePage {
+  flex-direction: row;
+  gap: 8px;
+  width: auto;
+  min-height: 36px;
+  padding: 0 14px;
+}
+
+.voteMark {
+  display: grid;
+  place-items: center;
+  height: 18px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.voteCount {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.voteWord {
+  font-weight: 600;
+}
+
+/* ---------- the stage badge ---------- */
+
+.stage {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.new {
+  background: #e8f1fb;
+  color: #0b5394;
+}
+
+.review {
+  background: $warnSoft;
+  color: $warnText;
+}
+
+.progress {
+  background: #ede7f6;
+  color: #5b2c9e;
+}
+
+.done {
+  background: $goodSoft;
+  color: $goodText;
+}
+
+.stopped {
+  background: $wash;
+  color: $subtext;
+}
+
+.other {
+  @include edge($lineStrong);
+  color: $text2;
+}

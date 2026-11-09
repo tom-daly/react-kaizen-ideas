@@ -1,0 +1,357 @@
+@use 'shared' as *;
+
+/* The frame round every page: headings, the setup screens, the row of pages
+   and the Reviewers page. Colours come from the site's theme. */
+
+.kaizen {
+  color: $text;
+  color: var(--bodyText);
+  font-size: 14px;
+  line-height: 1.45;
+
+  h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  h3 {
+    margin: 20px 0 6px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+// A full-page app or a full-width section has no margin of its own.
+.padded {
+  padding: 24px 32px 32px;
+
+  @media (max-width: 640px) {
+    padding: 16px;
+  }
+}
+
+.notice {
+  padding: 24px 0;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+.setup {
+  max-width: 680px;
+
+  p {
+    margin: 0 0 12px;
+  }
+}
+
+.lists {
+  margin: 0 0 16px;
+
+  dt {
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  dd {
+    margin: 2px 0 0;
+  }
+}
+
+.go {
+  margin-top: 16px;
+}
+
+/* ---------- setup progress ---------- */
+
+.steps {
+  @include listReset(16px 0 0);
+
+  li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 6px 0;
+  }
+}
+
+.mark {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.stepText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 1px;
+}
+
+.stepError {
+  font-size: 12px;
+  color: $danger;
+}
+
+.waiting {
+  .mark { border: 1.5px solid #c8c6c4; }
+  .stepText { color: #605e5c; }
+}
+
+.running {
+  .stepText { font-weight: 600; }
+}
+
+.done .mark { background: $goodText; }
+.failed .mark { background: $danger; }
+
+.skipped {
+  .mark { background: #8a8886; }
+  .stepText { color: #605e5c; }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.srOnly {
+  @include srOnly;
+}
+
+/* The back arrow in "← All ideas" links: sits on the text's line, a little smaller. */
+.backArrow {
+  margin-right: 6px;
+  font-size: 0.85em;
+  vertical-align: -1px;
+}
+
+/* ---------- the row of pages ---------- */
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 16px;
+  @include edge($line, bottom);
+}
+
+.tab {
+  margin: 0 0 -1px;
+  padding: 10px 12px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: $subtext;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    color: $text;
+    background: $wash;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  @include focusRing(-2px);
+
+  /* The same word in bold, taking up no height, so a tab is already as wide as
+     it will be when it's the one picked and the row doesn't jump. */
+  &::after {
+    content: attr(data-label);
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    font-weight: 600;
+  }
+
+  &[aria-current="page"] {
+    color: $text;
+    font-weight: 600;
+    border-bottom-color: $primary;
+  }
+}
+
+/* The buttons on a "not saved yet" warning. */
+.barActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* What the picked page shows. Takes focus when a page opens from somewhere
+   other than the row, so keyboard and screen reader users land on it. */
+.content {
+  &:focus {
+    outline: none;
+  }
+}
+
+.message {
+  margin-bottom: 12px;
+}
+
+/* ---------- the Reviewers page ---------- */
+
+.section {
+  max-width: 560px;
+
+  p {
+    margin: 0 0 8px;
+  }
+}
+
+.intro {
+  margin: 0;
+  max-width: 62ch;
+  color: $subtext;
+}
+
+.hint {
+  display: block;
+  font-size: 12px;
+  color: $subtext;
+}
+
+.saved {
+  font-weight: 600;
+}
+
+.people {
+  @include listReset(12px 0 0);
+  @include edge($line, top);
+}
+
+.person {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  @include edge($line, bottom);
+}
+
+.addPerson {
+  margin-top: 16px;
+}
+
+/* The spinner while a change saves, then what it did. */
+.peopleStatus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  min-height: 24px;
+  margin: 8px 0;
+}
+
+/* ---------- the Areas page ---------- */
+/* Shares the Reviewers page's frame: one row per area, the status line and the bar for errors. */
+
+.areaName {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.areaActions {
+  display: flex;
+  flex: none;
+}
+
+/* Renaming: the box takes the row, its buttons beside it, or under it on a narrow screen. */
+.areaEdit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+
+  .actions {
+    margin-top: 0;
+  }
+}
+
+.areaBox {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.areaAdd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+
+/* Level with the box, under its label. */
+.areaAddButton {
+  margin-top: 29px;
+}
+
+.areaDefault {
+  max-width: 280px;
+  margin-top: 16px;
+}
+
+/* Something that shows only once a save has taken longer than a moment. */
+.slowOnly {
+  visibility: hidden;
+  animation: showLate 0s linear 0.6s forwards;
+}
+
+@keyframes showLate {
+  to {
+    visibility: visible;
+  }
+}
+
+/* The area's name as the pill it shows as on the board, in its colour. */
+.areaPill {
+  align-self: flex-start;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: $wash;
+  color: $text2;
+  font-weight: 600;
+}
+
+/* A colour in the list of colours to pick from. */
+.swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: 0 4px;
+  border: 1px solid;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.swatchPlain {
+  background: $wash;
+  border-color: $lineStrong;
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Kaizen Ideas",
+    "id": "0f228ed8-d1a4-4837-ac63-f37efe07e2d4",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "TMD Consulting LLC",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Share improvement ideas, vote on them and follow them through to done."
+      },
+      "longDescription": {
+        "default": "Share improvement ideas, vote on them and follow them through to done."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Kaizen Ideas",
+        "description": "The Kaizen ideas web part.",
+        "id": "c929113d-0ce2-40c3-bafe-3cf9063bb641",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-kaizen.sppkg"
+  }
+}
