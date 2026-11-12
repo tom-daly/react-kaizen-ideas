@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Kaizen.module.scss';
+import styles from './KaizenIdeas.module.scss';
 import { NAV } from '../strings/home';
 
 export type Tab = 'ideas' | 'areas' | 'reviewers';

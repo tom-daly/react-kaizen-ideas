@@ -3,7 +3,7 @@ import {
   DefaultButton, IBasePicker, IconButton, IPersonaProps, MessageBar, MessageBarType, NormalPeoplePicker, Persona,
   PersonaSize, Spinner, SpinnerSize
 } from '@fluentui/react';
-import styles from '../Kaizen.module.scss';
+import styles from '../KaizenIdeas.module.scss';
 import type { SPFI } from '../../sp';
 import type { ISiteInfo } from '../../setup/problems';
 import { sameLogin } from '../../setup/permissions';

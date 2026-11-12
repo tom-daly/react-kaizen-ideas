@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton, Icon, PrimaryButton, ProgressIndicator, Spinner, SpinnerSize } from '@fluentui/react';
-import styles from './Kaizen.module.scss';
+import styles from './KaizenIdeas.module.scss';
 import type { IStep, StepState } from '../setup/plan';
 import { COMMON } from '../strings/common';
 import { SETUP_PROGRESS } from '../strings/setup';

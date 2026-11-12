@@ -3,7 +3,7 @@ import {
   DefaultButton, Dropdown, IContextualMenuItem, ITextField, IconButton, MessageBar, MessageBarType, PrimaryButton, Spinner, SpinnerSize,
   TextField
 } from '@fluentui/react';
-import styles from '../Kaizen.module.scss';
+import styles from '../KaizenIdeas.module.scss';
 import type { SPFI } from '../../sp';
 import type { ListIds } from '../../setup/schema';
 import { AreaChange, IAreas, areaCounts, areaNameProblem, changedAreas, sameAreas } from '../../ideas/areas';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MessageBar, MessageBarType, Spinner, SpinnerSize } from '@fluentui/react';
-import styles from './Kaizen.module.scss';
+import styles from './KaizenIdeas.module.scss';
 import type { SPFI } from '../sp';
 import type { ListIds } from '../setup/schema';
 import type { ISiteInfo, IProblem } from '../setup/problems';

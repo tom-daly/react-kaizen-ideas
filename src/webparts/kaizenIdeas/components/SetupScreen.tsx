@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PrimaryButton } from '@fluentui/react';
-import styles from './Kaizen.module.scss';
+import styles from './KaizenIdeas.module.scss';
 import { TOOL_LISTS } from '../setup/schema';
 import type { IProblem } from '../setup/problems';
 import { SETUP_SCREEN } from '../strings/setup';

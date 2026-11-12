@@ -2,17 +2,17 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
   "version": "2.0",
   "bundles": {
-    "kaizen-web-part": {
+    "kaizen-ideas-web-part": {
       "components": [
         {
-          "entrypoint": "./lib/webparts/kaizen/KaizenWebPart.js",
-          "manifest": "./src/webparts/kaizen/KaizenWebPart.manifest.json"
+          "entrypoint": "./lib/webparts/kaizenIdeas/KaizenIdeasWebPart.js",
+          "manifest": "./src/webparts/kaizenIdeas/KaizenIdeasWebPart.manifest.json"
         }
       ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "KaizenWebPartStrings": "lib/webparts/kaizen/loc/{locale}.js"
+    "KaizenIdeasWebPartStrings": "lib/webparts/kaizenIdeas/loc/{locale}.js"
   }
 }

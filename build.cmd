@@ -1,6 +1,6 @@
 @echo off
 rem Build, test and package the Kaizen Ideas web part.
-rem The package lands in sharepoint\solution\react-kaizen.sppkg, ready for the app catalog.
+rem The package lands in sharepoint\solution\react-kaizen-ideas.sppkg, ready for the app catalog.
 rem Stop "npm start" first: this build clears the folders it serves from.
 
 setlocal
@@ -28,7 +28,7 @@ if exist sharepoint\solution rmdir /s /q sharepoint\solution
 call npm run build || goto :failed
 
 echo.
-echo Package ready: %~dp0sharepoint\solution\react-kaizen.sppkg
+echo Package ready: %~dp0sharepoint\solution\react-kaizen-ideas.sppkg
 exit /b 0
 
 rem The Node version in use, like 22.14.0, or "none".

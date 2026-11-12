@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MessageBar, MessageBarType, Spinner, SpinnerSize } from '@fluentui/react';
-import styles from './Kaizen.module.scss';
-import type { IKaizenProps } from './IKaizenProps';
+import styles from './KaizenIdeas.module.scss';
+import type { IKaizenIdeasProps } from './IKaizenIdeasProps';
 import { TOOL_LISTS, ListIds } from '../setup/schema';
 import { IProblem, allListsExist, findProblems, listIds } from '../setup/problems';
 import type { IStep } from '../setup/plan';
@@ -26,7 +26,7 @@ type Status =
  * are there; site owners get the full check, so anything missing or changed by
  * hand shows up as something they can fix with one click.
  */
-const Kaizen: React.FC<IKaizenProps> = ({ sp, site, padded }) => {
+const KaizenIdeas: React.FC<IKaizenIdeasProps> = ({ sp, site, padded }) => {
   const [status, setStatus] = React.useState<Status>({ kind: 'checking' });
 
   const check = React.useCallback(async (notice?: string): Promise<void> => {
@@ -115,4 +115,4 @@ const Kaizen: React.FC<IKaizenProps> = ({ sp, site, padded }) => {
   );
 };
 
-export default Kaizen;
+export default KaizenIdeas;

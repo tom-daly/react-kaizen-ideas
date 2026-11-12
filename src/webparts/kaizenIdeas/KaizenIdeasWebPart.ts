@@ -7,24 +7,24 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { SPPermission } from '@microsoft/sp-page-context';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 
-import * as strings from 'KaizenWebPartStrings';
-import Kaizen from './components/Kaizen';
-import { IKaizenProps } from './components/IKaizenProps';
+import * as strings from 'KaizenIdeasWebPartStrings';
+import KaizenIdeas from './components/KaizenIdeas';
+import { IKaizenIdeasProps } from './components/IKaizenIdeasProps';
 import { createSP, SPFI } from './sp';
 import { everyoneClaim } from './setup/permissions';
 import type { ISiteInfo } from './setup/problems';
 
-export interface IKaizenWebPartProps {}
+export interface IKaizenIdeasWebPartProps {}
 
-export default class KaizenWebPart extends BaseClientSideWebPart<IKaizenWebPartProps> {
+export default class KaizenIdeasWebPart extends BaseClientSideWebPart<IKaizenIdeasWebPartProps> {
 
   private _sp: SPFI | undefined;
   private _site: ISiteInfo | undefined;
 
   public render(): void {
     if (!this._sp || !this._site) return;
-    const element: React.ReactElement<IKaizenProps> = React.createElement(
-      Kaizen,
+    const element: React.ReactElement<IKaizenIdeasProps> = React.createElement(
+      KaizenIdeas,
       {
         sp: this._sp,
         site: this._site,

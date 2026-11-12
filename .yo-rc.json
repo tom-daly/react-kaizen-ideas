@@ -1,22 +1,22 @@
 {
   "@microsoft/generator-sharepoint": {
     "whichFolder": "subdir",
-    "solutionName": "react-kaizen",
+    "solutionName": "react-kaizen-ideas",
     "environment": "spo",
     "packageManager": "npm",
     "useGulp": false,
     "componentType": "webpart",
     "template": "react",
-    "componentName": "Kaizen",
+    "componentName": "KaizenIdeas",
     "componentDescription": "Kaizen ideas web part",
     "plusBeta": false,
     "isCreatingSolution": true,
     "nodeVersion": "22.14.0",
     "sdksVersions": {},
     "version": "1.23.2",
-    "libraryName": "react-kaizen",
+    "libraryName": "react-kaizen-ideas",
     "libraryId": "0f228ed8-d1a4-4837-ac63-f37efe07e2d4",
-    "solutionShortDescription": "react-kaizen description",
+    "solutionShortDescription": "react-kaizen-ideas description",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false
   }

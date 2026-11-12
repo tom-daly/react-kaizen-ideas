@@ -6,7 +6,7 @@ Everything is kept in SharePoint lists on the site. No server, no email.
 
 ## Setup on a new site
 
-1. Deploy `sharepoint/solution/react-kaizen.sppkg` to the app catalog.
+1. Deploy `sharepoint/solution/react-kaizen-ideas.sppkg` to the app catalog.
 2. Add the **Kaizen ideas** web part to a page on a site all staff can open.
 3. A site owner opens the page and clicks **Set up Kaizen ideas**. That makes two lists
    and a group:
@@ -68,8 +68,8 @@ Or by hand, after `npm install`:
 - `npx heft test`: run the tests.
 
 SharePoint calls go through [PnPjs](https://pnp.github.io/pnpjs/). The list definitions
-live in `src/webparts/kaizen/setup/schema.ts`. All the words people see are in
-`src/webparts/kaizen/strings/`.
+live in `src/webparts/kaizenIdeas/setup/schema.ts`. All the words people see are in
+`src/webparts/kaizenIdeas/strings/`.
 
 ## Licence
 
