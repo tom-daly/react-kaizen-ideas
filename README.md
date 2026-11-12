@@ -4,11 +4,33 @@ A SharePoint web part for continuous improvement: staff share ideas for making w
 better, vote for the ones they want to see happen, and follow each one through to done.
 Everything is kept in SharePoint lists on the site. No server, no email.
 
-## Setup on a new site
+![Sharing an idea, voting for it, and a reviewer moving it to Under review with a note](docs/images/walkthrough.gif)
 
-1. Deploy `sharepoint/solution/react-kaizen-ideas.sppkg` to the app catalog.
-2. Add the **Kaizen ideas** web part to a page on a site all staff can open.
-3. A site owner opens the page and clicks **Set up Kaizen ideas**. That makes two lists
+For a tour of the features, see the [Kaizen Ideas page](https://thomasdaly.net/projects/kaizen-ideas/).
+
+## What you need
+
+| Who | What they do |
+|---|---|
+| SharePoint Administrator | Uploads the package to the tenant app catalog and enables it. |
+| Site owner | Adds the app and web part to a page, runs setup and picks the reviewers. |
+| Site collection administrator | Only needed when the page says something needs IT. |
+
+It uses SharePoint only. There are no API permissions to approve, and it sends no email,
+so you'll need to tell people where to find the page.
+
+## Install
+
+1. Download `react-kaizen-ideas.sppkg` from the
+   [latest release](https://github.com/tom-daly/react-kaizen-ideas/releases/latest).
+2. In the **SharePoint admin center**, go to **More features → Apps → Open**, then
+   **Upload** the file.
+3. In the panel that opens, choose whether to tick **Enable this app and add it to all
+   sites**, then click **Enable app**. If you leave it unticked, site owners add it from
+   **New → App** on their own site, under **From Your Organization**.
+4. On a site all staff can open, edit a page and add the **Kaizen ideas** web part, which
+   is in the web part picker's **Advanced** group. Publish the page.
+5. A site owner opens the page and clicks **Set up Kaizen ideas**. That makes two lists
    and a group:
 
 | List | Web address | Who sees what |
@@ -46,6 +68,24 @@ where they are, and the board's area picker keeps it while any idea still has it
 saves to the **Area** column of the Kaizen ideas list, so changing that column by hand
 works too. Setup never puts the old areas back.
 
+### What it looks like
+
+**Ideas**
+
+![The board of ideas, with vote counts, stages and areas](docs/images/board.png)
+
+![One idea, with its stage, owner, a note from the reviewers and the three parts of the idea](docs/images/idea.png)
+
+![The Share an idea form](docs/images/share-idea.png)
+
+**Review**
+
+![The Review panel, with the stage, owner and note from the reviewers](docs/images/review.png)
+
+**Areas**
+
+![The Areas page, with each area's colour and how many ideas it has](docs/images/areas.png)
+
 ## Known limits
 
 - Anyone can change their own idea's **stage** by editing the list directly in SharePoint,
@@ -70,6 +110,19 @@ Or by hand, after `npm install`:
 SharePoint calls go through [PnPjs](https://pnp.github.io/pnpjs/). The list definitions
 live in `src/webparts/kaizenIdeas/setup/schema.ts`. All the words people see are in
 `src/webparts/kaizenIdeas/strings/`.
+
+### Publishing a release
+
+Push a version tag and GitHub builds, tests and publishes the release, with the `.sppkg`
+attached:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The tag sets the package's version, so use a higher number each time. SharePoint uses it
+to tell that the package has been updated.
 
 ## Licence
 
